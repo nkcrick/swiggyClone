@@ -1,8 +1,11 @@
 spring:
   kafka:
-    bootstrap-servers: host.docker.internal:29092
+    bootstrap-servers: localhost:9092
     producer:
+      retries: 10
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     properties:
       spring.json.add.type.headers: false
+    admin:
+      auto-create: true
